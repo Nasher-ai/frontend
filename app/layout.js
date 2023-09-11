@@ -1,7 +1,10 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Noto_Sans_Arabic } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const noto_sans = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-noto-sans'
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,8 +13,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ar" suppressHydrationWarning>
+      <head>
+        <script src="https://kit.fontawesome.com/3fe7c2032c.js" crossorigin="anonymous"></script>
+      </head>
+      <body className={`${noto_sans.variable} font-sans `} dir='rtl' >
+        {children}
+      </body>
     </html>
   )
 }
