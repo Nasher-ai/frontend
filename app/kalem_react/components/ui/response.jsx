@@ -12,7 +12,7 @@ const lorem = `أمدها المضي الأوربيين من بين, ٣٠ بال
 غير أم ومضى أجزاء لفرنسا. مايو كرسي استراليا، به، أن, تم على وصغار واُسدل الإكتفاء. دار سقوط لغات الإمتعاض أن, بـ تشكيل المنتصر قبل. فرنسية وبغطاء أن دنو, ما بعد كُلفة بأضرار الصفحات. نتيجة وانتهاءً من يتم. كلّ اكتوبر واندونيسيا، عن. دنو فرنسا`;
 
 
-export default function Response({ icon }) {
+export default function Response({ icon, text }) {
     const [aiMessage, setAiMessage] = useState('');
 
     // const {response, setResponse} = useState('inital');
@@ -44,8 +44,8 @@ export default function Response({ icon }) {
       };
 
       useEffect(() => {
-        simulateTyping(lorem)
-      }, [])
+        simulateTyping(text)
+      }, [text])
     
 
     return (

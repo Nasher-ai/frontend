@@ -15,7 +15,7 @@ export default function KalamForm({onSubmit: submit}) {
     
       const form = useForm({  
         defaultValues: {
-          userPromt: "",
+          userPrompt: "",
           about: "",
           tone: null,
           targetedPlatforms: {
@@ -38,7 +38,7 @@ export default function KalamForm({onSubmit: submit}) {
                     <Form 
                         control={form.control}
                         // value={form.promt}
-                        name="userPromt"
+                        name="userPrompt"
                         className="h-[303px]"
                         placeholder={promtPlaceholder}
                         // {...form.register('promt')}
@@ -82,8 +82,9 @@ export default function KalamForm({onSubmit: submit}) {
                              
                             Object.entries(SUPPORTED_SOCIAL_MEDIA).map(([key, value])  => (
                                 <IconCheckbox 
+                                    key={key}
                                     icon={value.iconClass}
-                                    name={`platforms.${key}`}
+                                    name={`targetedPlatforms.${key}`}
                                     control={form.control}
                                 />
                             ))}

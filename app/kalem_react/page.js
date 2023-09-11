@@ -12,6 +12,7 @@ export default function Page() {
   const onSubmit = (data) => {
     console.log('fetching')
     console.log('data: ', data)
+    data.tone = data.tone?.value
     fetch("/api/kalem", {
       method: "POST",
       body: JSON.stringify(data),
@@ -22,7 +23,6 @@ export default function Page() {
         setResponses(d)
       });
     }).catch();
-    console.log("responses: ", responses)
 
     // const targetedPlatforms = data.platforms;
     // console.log('type', typeof responses)
@@ -52,11 +52,11 @@ export default function Page() {
 
                     {/* Outputs */}
                     <div className="self-stretch h-auto rounded-[10px] flex-col justify-start items-end gap-[18px] flex">
-                        {/* {
-                        Object.values(responses).map(iconKey => (
-                            <Response icon={SUPPORTED_SOCIAL_MEDIA[iconKey]['iconClass']}/>
+                        {
+                        Object.values(responses).map(response => (
+                            <Response key={response.platform} icon={SUPPORTED_SOCIAL_MEDIA[response.platform]['iconClass']} text={response.text}/>
                         ))
-                        } */}
+                        }
                     </div>
                 </div>
             </div>

@@ -4,10 +4,10 @@ import { ChevronDownIcon, CheckIcon } from '@heroicons/react/20/solid'
 import { Controller } from 'react-hook-form'
 
 const TONES = [
-    'رسمي',
-    'عفوي',
-    'فني',
-    'كوميدي',
+    {value: 'formal', name: 'رسمي'},
+    {value: 'spontaneous', name: 'عفوي'},
+    {value: 'creative', name: 'فني'},
+    {value: 'comedy', name: 'كوميدي'},
 ]
 
 export default function Dropdown({ control, selected, name }) {
@@ -31,7 +31,7 @@ export default function Dropdown({ control, selected, name }) {
                                 ${field.value == null? 'text-zinc-500': 'text-white'} 
                                 text-[12px] font-bold leading-tight`}
                                 >
-                                    {field.value == null ? "نـــبرة الخطاب" : field.value}
+                                    {field.value == null ? "نـــبرة الخطاب" : field.value.name}
                             </div>
                             
                             {/* Down Icon */}
@@ -71,7 +71,7 @@ export default function Dropdown({ control, selected, name }) {
                                                 {/* Text */}
                                                 <span
                                                     className={`block truncate ${
-                                                    selected ? 'font-medium' : 'font-normal'}`}>{tone}
+                                                    selected ? 'font-medium' : 'font-normal'}`}>{tone.name}
                                                 </span>
 
                                                 {/* Check Icon */}

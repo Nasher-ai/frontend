@@ -1,62 +1,54 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPEN_AI_KEY,
-// });
-
+const openai = new OpenAI({
+  apiKey: process.env.OPEN_AI_KEY,
+});
 export async function POST(request) {
   const body = await request.json();
-  console.log("Body", body)
-  const { userPromt, about, tone, targetedPlatforms } = body;
+  const { userPrompt, about, tone, targetedPlatforms } = body;
 
-  if (!userPromt || !about || !tone || !targetedPlatforms) {
+  if (!userPrompt || !about || !tone || !targetedPlatforms) {
     return new NextResponse("Invalid data", { status: 400 });
   }
-  //TODO Add validation
-  let systemMessage = ""
+
   let res = [];
-  for (const platform of targetedPlatforms) {
-    switch (platform) {
-      case "instagram":
-        systemMessage = ""
-        break;
-        case "linkedin":
-        systemMessage = ""
-        break;
-        case "facebook":
-        systemMessage = ""
-        break;
-        case "twitter":
-        systemMessage = ""
-        break;
-        case "tiktok":
-        systemMessage = ""
-        break;
-      default:
-        break;
-    }
+
+  console.log("targetedPlatforms ", targetedPlatforms);
+
+  for (const platform of Object.keys(targetedPlatforms)) {
+    if (!targetedPlatforms[platform]) continue;
+    console.log("Getting ", platform);
+    let systemMessage = `You are an Arabic Social media content Writer AI!
+    As an expert in writing engaging social media contents according to this platform ${platform} and in this tone ${tone}, your task is to enhance a provided text from the user in Arabic. 
+    If any English words are used, translate them to Arabic. Also you have to keep in mind what the user says about his audience or company ${about}.
+
+    Instructions:
+    1. Read and analyze the text carefully, ensuring it is in Arabic or ask for a translation if it's entirely in English.
+    2. Correct any errors and remove emojis if present. `;
 
     try {
-      // const completion = await openai.chat.completions.create({
-      //   messages: [
-      //     {
-      //       role: "system",
-      //       content: systemMessage,
-      //     },
-      //     { role: "user", content: userPromt },
-      //   ],
-      //   model: "gpt-3.5-turbo",
-      // });
-      // res.push(audience: audience, response: (completion.choices[0].message));
+      const completion = await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: systemMessage,
+          },
+          { role: "user", content: userPrompt },
+          { role: "user", content: about },
+        ],
+        model: "gpt-3.5-turbo",
+      });
+
       res.push({
-        audience: audience,
-        response: "Target = " + audience
-      })
+        platform: platform,
+        text: completion.choices[0].message.content,
+      });
     } catch (e) {
       console.log("OPENAI", e);
-      return new NextResponse("Internal Error", { status: 500 , message: e});
+      return new NextResponse("Internal Error", { status: 500 });
     }
   }
+  console.log("Done");
   return NextResponse.json(res);
 }
