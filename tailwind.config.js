@@ -22,7 +22,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-noto-sans)']
-      }
+      },
+      gradientColorStops: {
+        'gradient-blue': ['#006AD0', '#023166'],
+      },
     },
     
   },

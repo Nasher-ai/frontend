@@ -8,10 +8,14 @@ import { SUPPORTED_SOCIAL_MEDIA } from "./components/ui/icon-checkbox";
 
 export default function Page() {
     const [responses, setResponses] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = (data) => {
     console.log('fetching')
     console.log('data: ', data)
+    setIsLoading(true)
+    setResponses([])
+
     data.tone = data.tone?.value
     fetch("/api/kalem", {
       method: "POST",
@@ -21,8 +25,13 @@ export default function Page() {
       res.json().then((d) => {
         console.log("Res", d);
         setResponses(d)
+        setIsLoading(false)
       });
-    }).catch();
+    }).catch((e) => {
+      console.log('Error: ', e)
+      setIsLoading(false)
+    });
+    console.log("responses: ", responses)
 
     // const targetedPlatforms = data.platforms;
     // console.log('type', typeof responses)
@@ -48,7 +57,7 @@ export default function Page() {
                     </div>
                     
                     {/* Form */}
-                    <KalamForm onSubmit={onSubmit}/>
+                    <KalamForm onSubmit={onSubmit} isLoading={isLoading}/>
 
                     {/* Outputs */}
                     <div className="self-stretch h-auto rounded-[10px] flex-col justify-start items-end gap-[18px] flex">

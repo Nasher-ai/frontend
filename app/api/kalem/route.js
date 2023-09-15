@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { useChatCompletion, GPT35 } from 'openai-streaming-hooks';
 
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
@@ -22,6 +23,7 @@ export async function POST(request) {
     let systemMessage = `You are an Arabic Social media content Writer AI!
     As an expert in writing engaging social media contents according to this platform ${platform} and in this tone ${tone}, your task is to enhance a provided text from the user in Arabic. 
     If any English words are used, translate them to Arabic. Also you have to keep in mind what the user says about his audience or company ${about}.
+    ( The output should be with no extra commentary)
 
     Instructions:
     1. Read and analyze the text carefully, ensuring it is in Arabic or ask for a translation if it's entirely in English.
@@ -39,11 +41,11 @@ export async function POST(request) {
         ],
         model: "gpt-3.5-turbo",
       });
-
       res.push({
         platform: platform,
         text: completion.choices[0].message.content,
       });
+      // console.log('resp.',res)
     } catch (e) {
       console.log("OPENAI", e);
       return new NextResponse("Internal Error", { status: 500 });

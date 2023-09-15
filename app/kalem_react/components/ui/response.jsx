@@ -43,9 +43,9 @@ export default function Response({ icon, text }) {
         }, 20); // Adjust the timing here (in milliseconds) to control typing speed
       };
 
-      useEffect(() => {
-        simulateTyping(text)
-      }, [text])
+      // useEffect(() => {
+      //   simulateTyping(text)
+      // }, [text])
     
 
     return (
@@ -62,7 +62,8 @@ export default function Response({ icon, text }) {
 
             <div className="grow shrink basis-0 h-auto p-6 bg-inner-grey rounded-[10px] shadow items-start gap-2.5 flex">
                 <div className="text-right text-white text-opacity-50 text-sm font-semibold leading-normal">
-                    {aiMessage}
+                    {/* {aiMessage} */}
+                    {text}
                 </div>
             </div>
             

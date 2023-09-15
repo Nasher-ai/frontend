@@ -3,16 +3,17 @@ import { IconCheckbox, SUPPORTED_SOCIAL_MEDIA } from "./ui/icon-checkbox";
 import Dropdown from "./ui/dropdown";
 import Form from "./ui/form";
 import { useForm } from "react-hook-form";
+import SubmitButton from "./ui/submit-button";
+
 
 
 
 const promtPlaceholder = "السلام عليكم, اريد منك مساعدتي في كتابة محتوى عن اهميه الرياضة اليومية لجسم الإنسان و ايضا اهميتها للكبار في السن و الأثر اليومي لها عليهم نفسيا و جسدينا, المحتوى سيكون موجة لمنصة الإنستقرام"
 const audiencePlaceholder = "نبذة عن الشركة او الجمهور المستهدف"
 
-export default function KalamForm({onSubmit: submit}) {
-    const onSubmit = (data) => {submit(data)
-};
-    
+export default function KalamForm({onSubmit: submit, isLoading}) {
+    const onSubmit = (data) => {submit(data)};
+
       const form = useForm({  
         defaultValues: {
           userPrompt: "",
@@ -28,6 +29,20 @@ export default function KalamForm({onSubmit: submit}) {
         },
       });
     
+      function validateValues(values) {
+        let valiPlats = []
+        Object.entries(values.targetedPlatforms).map(([k,v]) => {if(v){valiPlats.push(k)}})
+        
+        if (values.userPrompt != '' && values.about != '' && 
+            values.tone != null && !!valiPlats.length) {
+                return true
+            }
+
+        return false
+      }
+
+    let isSubmitDisabled = !validateValues(form.watch())
+    console.log(isSubmitDisabled)
     return(
         <form onSubmit={form.handleSubmit(onSubmit)} dir='rtl'className="self-stretch p-[30px] bg-outer-grey rounded-[20px] flex-col justify-start items-end gap-[35px] flex">
             <div className="self-stretch justify-end items-start gap-[15px] inline-flex">
@@ -56,13 +71,10 @@ export default function KalamForm({onSubmit: submit}) {
                     />
 
                     {/* Submit Button */}
-                    <button 
-                        type="submit"
-                        className="self-stretch px-4 py-3 bg-gradient-to-r from-blue-begin to-blue-end rounded-[7px] justify-center items-center gap-3 inline-flex"
-                        // onClick={() => console.log(form.getValues())}
-                        >
-                            <div className="text-right text-white text-base font-bold leading-7">انـــشــاء</div>
-                    </button>
+                    <SubmitButton 
+                        isDisabled={isSubmitDisabled}
+                        isLoading={isLoading}    
+                    />
                 </div>
 
                 {/* Left Side */}

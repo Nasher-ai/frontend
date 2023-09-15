@@ -17,7 +17,7 @@ export default function Navbar() {
             </div>
 
             {/* Preorder Button */}
-            <button className="self-stretch px-[22px] hover:bg-sky-700 bg-gradient-to-r from-blue-begin to-blue-end rounded-[7px] flex-col justify-center items-center gap-3 inline-flex">
+            <button className="self-stretch px-[22px] bg-gradient-to-r from-blue-begin to-blue-end rounded-[7px] flex-col justify-center items-center gap-3 inline-flex">
                 <div 
                   className="justify-center items-center gap-2.5 inline-flex"
                   onClick={() => {
