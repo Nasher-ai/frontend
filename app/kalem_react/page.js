@@ -21,6 +21,10 @@ export default function Page() {
       method: "POST",
       body: JSON.stringify(data),
     }).then((res) => {
+      if (res.status != 200) {
+        setIsLoading(false)
+        return
+      }
       console.log('Res json: ', res)
       res.json().then((d) => {
         console.log("Res", d);
