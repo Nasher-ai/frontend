@@ -1,25 +1,28 @@
 "use client";
 import { Controller } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fab, faInstagram, faSquareFacebook, faSquareXTwitter, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+
 
 const SUPPORTED_SOCIAL_MEDIA = {
   "facebook": {
-    iconClass: "fa-brands fa-square-facebook",
+    iconClass: faSquareFacebook,
     activeColor: "text-white"
   },
   "instagram": {
-    iconClass: "fa-brands fa-instagram",
+    iconClass: faInstagram,
     activeColor: "text-white"
   },
   "twitter": {
-    iconClass: "fa-brands fa-square-x-twitter",
+    iconClass: faSquareXTwitter,
     activeColor: "text-white"
   },
   "tiktok": {
-    iconClass: "fa-brands fa-tiktok",
+    iconClass: faTiktok,
     activeColor: "text-white"
   },
   "linkedin": {
-    iconClass: "fa-brands fa-linkedin",
+    iconClass: faLinkedinIn,
     activeColor: "text-white"
   },
 };
@@ -60,6 +63,7 @@ function IconCheckbox({ icon, acticveColor, name, control}) {
     //     console.log('toggle: ', isChecked)
     // }
     
+    console.log(icon);
     return(
       <Controller
             control={control}
@@ -67,13 +71,17 @@ function IconCheckbox({ icon, acticveColor, name, control}) {
             render={({
                 field
                 }) => (
+                  <div>
                     <input 
                         className={
-                          `appearance-none ${icon} fa-fw ${field.value? '': 'text-outer-label'}`}
+                          "appearance-none"}
                         type="checkbox"
                         checked={field.value}
                         onChange={field.onChange}
                     />
+                    <FontAwesomeIcon icon={icon} className={`${field.value? '': 'text-outer-label'} fa-fw cursor-pointer`} 
+                      onClick={() => field.onChange(!field.value)}/>
+                  </div>
             )}
         /> 
                        

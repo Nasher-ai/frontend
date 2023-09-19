@@ -13,6 +13,7 @@ export default function Navbar({ isMobile }) {
                     width={isMobile ? 128 :187}
                     height={isMobile ? 32: 46}
                     quality={100}
+                    alt={"logo"}
                     />
                 </div>
             </div>

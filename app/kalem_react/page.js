@@ -32,14 +32,21 @@ export default function Page() {
     fetch("/api/kalem", {
       method: "POST",
       body: JSON.stringify(data),
-    }).then((res) => {
+    }).then((res) => 
+    {
+      if (res.status != 200) {
+        setIsLoading(false)
+        return
+      }
       console.log('Res json: ', res)
-      res.json().then((d) => {
+      res.json().then((d) => 
+      {
         console.log("Res", d);
         setResponses(d)
         setIsLoading(false)
       });
-    }).catch((e) => {
+    }).catch((e) => 
+    {
       console.log('Error: ', e)
       setIsLoading(false)
     });
