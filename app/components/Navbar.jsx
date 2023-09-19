@@ -9,7 +9,7 @@ export default function Navbar({ isMobile }) {
             <div className="p-3 bg-inner-grey rounded-[5px] flex-col justify-center items-center inline-flex">
                 <div className="p-1 relative">
                     <Image 
-                    src="/images/nasher_logo.png"
+                    src="/images/nasher_logo.svg"
                     width={isMobile ? 128 :187}
                     height={isMobile ? 32: 46}
                     quality={100}

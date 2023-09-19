@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Form from "./form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react";
 
 const lorem = `أمدها المضي الأوربيين من بين, ٣٠ بال بداية اسبوعين. ٣٠ الى تسبب فهرست وكسبت, مع بقصف الهادي إيطاليا دون. عدم بـ ومضى العالمي إيطاليا, أن وصل ونتج وتنامت. بل لغزو بلاده والديون تحت, بـ لها خطّة وانهاء الخاسرة, بـ وبعض قتيل، حول. عدم و وسوء الدّفاع, غير كل خطّة الصفحات بالتوقيع, عل غضون الإتحاد بلا. وتم تنفّس كثيرة الإتفاقية كل. فكان إجلاء لإعادة به، و, أخر التي الربيع، الساحلية مع.
@@ -38,9 +39,12 @@ export default function Response({ icon, text, isMobile }) {
         <div className={`self-stretch ${isMobile? 'p-8' : 'inline-flex p-6'} bg-outer-grey rounded-[20px] justify-center  gap-[30px]`}>
             
             {/* Icon */}
-            <div className={` ${isMobile? 'text-8xl pb-5' : 'text-7xl pt-0 justify-center'} self-stretch items-start gap-2.5 flex text-outer-label `}>
+            {/* <div className={` ${isMobile? 'text-8xl pb-5' : 'text-7xl pt-0 justify-center'} self-stretch items-start gap-2.5 flex text-outer-label `}>
                 <i className={icon}></i>
-            </div>
+            </div> */}
+
+            <FontAwesomeIcon icon={icon} className={` ${isMobile? 'text-8xl pb-5' : 'text-7xl pt-0 justify-center'} self-stretch items-start gap-2.5 flex text-outer-label `} 
+              onClick={() => field.onChange(!field.value)}/>
             
             {/* Response */}
             {/* <Form className="h-[173px]" placeholder="نبذة عن الشركة و الجمهور المستهدف"/> */}

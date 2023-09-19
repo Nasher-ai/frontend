@@ -1,7 +1,7 @@
 "use client";
 import { Controller } from "react-hook-form";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fab, faInstagram, faSquareFacebook, faSquareXTwitter, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { fab, faInstagram, faSquareFacebook, faSquareXTwitter, faTiktok, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 
 const SUPPORTED_SOCIAL_MEDIA = {
@@ -22,7 +22,7 @@ const SUPPORTED_SOCIAL_MEDIA = {
     activeColor: "text-white"
   },
   "linkedin": {
-    iconClass: faLinkedinIn,
+    iconClass: faLinkedin,
     activeColor: "text-white"
   },
 };

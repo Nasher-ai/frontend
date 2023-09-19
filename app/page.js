@@ -1,113 +1,90 @@
-import Image from 'next/image'
+"use client";
+import KalamForm from "./components/KalamForm";
+import Navbar from "./components/Navbar";
+import Response from "./components/ui/response";
+import { useState } from 'react'
+import { SUPPORTED_SOCIAL_MEDIA } from "./components/ui/icon-checkbox";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+
+const lorem = `أمدها المضي الأوربيين من بين, ٣٠ بال بداية اسبوعين. ٣٠ الى تسبب فهرست وكسبت, مع بقصف الهادي إيطاليا دون. عدم بـ ومضى العالمي إيطاليا, أن وصل ونتج وتنامت. بل لغزو بلاده والديون تحت, بـ لها خطّة وانهاء الخاسرة, بـ وبعض قتيل، حول. عدم و وسوء الدّفاع, غير كل خطّة الصفحات بالتوقيع, عل غضون الإتحاد بلا. وتم تنفّس كثيرة الإتفاقية كل. فكان إجلاء لإعادة به، و, أخر التي الربيع، الساحلية مع.
+
+مع عالمية للحكومة بالسيطرة تحت. دخول السفن تم ذلك, حتى مع أمام مشروط بالحرب, يبق وحتّى تصرّف الأعمال ما. الله بالإنزال و هذا. اللا الأولى شيء هو. وأزيز الصين الأراضي بين أم. الثالث، الكونجرس دون بـ, تحت وقام أراض الأمريكية إذ.
+
+جُل ٣٠ بقعة لعدم أفريقيا, مقاومة لهيمنة العالمي أخر بل, شدّت اوروبا تحت بل. مسرح للسيطرة الأهداف لم دار, بفرض إبّان الى بـ. بل ٢٠٠٤ فمرّ اكتوبر ولم, بزمام الأحمر الوراء كل وتم. كل استبدال وتتحمّل أما, بحق ممثّلة الصفحات الإقتصادية هو.
+
+غير أم ومضى أجزاء لفرنسا. مايو كرسي استراليا، به، أن, تم على وصغار واُسدل الإكتفاء. دار سقوط لغات الإمتعاض أن, بـ تشكيل المنتصر قبل. فرنسية وبغطاء أن دنو, ما بعد كُلفة بأضرار الصفحات. نتيجة وانتهاءً من يتم. كلّ اكتوبر واندونيسيا، عن. دنو فرنسا`;
+
+
+export default function Page() {
+  // const isDesktop = useMediaQuery('(min-width:605px )')
+  const isMobile = useMediaQuery('(max-width:700px)')
+  const [responses, setResponses] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = (data) => {
+    console.log('fetching')
+    console.log('data: ', data)
+    setIsLoading(true)
+    setResponses([])
+
+    data.tone = data.tone?.value
+    fetch("/api/kalem", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then((res) => 
+    {
+      if (res.status != 200) {
+        setIsLoading(false)
+        return
+      }
+      console.log('Res json: ', res)
+      res.json().then((d) => 
+      {
+        console.log("Res", d);
+        setResponses(d)
+        setIsLoading(false)
+      });
+    }).catch((e) => 
+    {
+      console.log('Error: ', e)
+      setIsLoading(false)
+    });
+    console.log("responses: ", responses)
+  };
+
+  
+    return (
+        <div className=" px-[30px] w-full pt-2.5 pb-[30px] bg-black flex-col justify-start items-center gap-[60px] inline-flex">
+            <Navbar isMobile={isMobile}/>
+            {/* Body */}
+            <div className="self-stretch justify-center items-start gap-[34px] inline-flex">
+                <div className="grow shrink basis-0 flex-col justify-start items-center gap-11 inline-flex">
+
+                    {/* Tilte (mobile? 22: 26) */}
+                    <div className={`${isMobile? 'text-[22px]': 'text-[26px]'} text-center text-[#B2B2B2] font-extrabold leading-[45.68px]`}>
+                        اكتب منشورك القادم في لحظات
+                    </div>
+                    
+                    {/* Form */}
+                    <KalamForm onSubmit={onSubmit} isLoading={isLoading} isMobile={isMobile}/>
+
+                    {/* Outputs */}
+                    <div className="self-stretch h-auto rounded-[10px] flex-col justify-start items-end gap-[18px] flex">
+                        <Response icon={SUPPORTED_SOCIAL_MEDIA['linkedin']['iconClass']} text={'lorem'} isMobile={isMobile} />
+                        {
+                        Object.values(responses).map(response => (
+                            <Response 
+                              key={response.platform} 
+                              icon={SUPPORTED_SOCIAL_MEDIA[response.platform]['iconClass']} 
+                              text={response.text}
+                              isMobile={isMobile}  
+                            />
+                        ))
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div> */}
-    </main>
-  )
+    )
 }

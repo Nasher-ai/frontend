@@ -1,4 +1,5 @@
 import { SUPPORTED_SOCIAL_MEDIA } from "./ui/icon-checkbox"
+import Response from "./ui/response"
 
 export default function Outputs({ responses }) {
     return (
