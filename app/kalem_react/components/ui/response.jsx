@@ -12,24 +12,9 @@ const lorem = `أمدها المضي الأوربيين من بين, ٣٠ بال
 غير أم ومضى أجزاء لفرنسا. مايو كرسي استراليا، به، أن, تم على وصغار واُسدل الإكتفاء. دار سقوط لغات الإمتعاض أن, بـ تشكيل المنتصر قبل. فرنسية وبغطاء أن دنو, ما بعد كُلفة بأضرار الصفحات. نتيجة وانتهاءً من يتم. كلّ اكتوبر واندونيسيا، عن. دنو فرنسا`;
 
 
-export default function Response({ icon, text }) {
+export default function Response({ icon, text, isMobile }) {
     const [aiMessage, setAiMessage] = useState('');
 
-    // const {response, setResponse} = useState('inital');
-    // const message = lorem;
-
-    // useEffect(() => {
-
-    //     const typeResponse = async () => {
-    //         for (let i = 0; i < message; i++) {
-    //             await setTimeout(function() {
-    //                 setResponse('response')//message.substring(0, i + 1)
-    //             }, 1000)
-    //         }    
-    //     }
-
-    //     typeResponse()
-    // })
 
     const simulateTyping = (message) => {
         let i = 0;
@@ -43,17 +28,17 @@ export default function Response({ icon, text }) {
         }, 20); // Adjust the timing here (in milliseconds) to control typing speed
       };
 
-      // useEffect(() => {
-      //   simulateTyping(text)
-      // }, [text])
+      useEffect(() => {
+        simulateTyping(text)
+      }, [text])
     
 
     return (
         
-        <div className="self-stretch p-6 bg-outer-grey rounded-[20px] justify-center items-center gap-[30px] inline-flex">
+        <div className={`self-stretch ${isMobile? 'p-8' : 'inline-flex p-6'} bg-outer-grey rounded-[20px] justify-center  gap-[30px]`}>
             
             {/* Icon */}
-            <div className="w-[61px] self-stretch pt-6 justify-center items-start gap-2.5 flex text-outer-label text-6xl">
+            <div className={` ${isMobile? 'text-8xl pb-5' : 'text-7xl pt-0 justify-center'} self-stretch items-start gap-2.5 flex text-outer-label `}>
                 <i className={icon}></i>
             </div>
             
@@ -62,8 +47,8 @@ export default function Response({ icon, text }) {
 
             <div className="grow shrink basis-0 h-auto p-6 bg-inner-grey rounded-[10px] shadow items-start gap-2.5 flex">
                 <div className="text-right text-white text-opacity-50 text-sm font-semibold leading-normal">
-                    {/* {aiMessage} */}
-                    {text}
+                    {aiMessage}
+                    {/* {text} */}
                 </div>
             </div>
             

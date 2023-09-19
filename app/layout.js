@@ -1,7 +1,3 @@
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-config.autoAddCss = false
-
 import './globals.css'
 import { Noto_Sans_Arabic } from 'next/font/google'
 
@@ -18,6 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" suppressHydrationWarning>
+      <head>
+        <script src="https://kit.fontawesome.com/3fe7c2032c.js" crossorigin="anonymous"></script>
+      </head>
       <body className={`${noto_sans.variable} font-sans `} dir='rtl' >
         {children}
       </body>

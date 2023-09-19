@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import { useChatCompletion, GPT35 } from 'openai-streaming-hooks';
+// import { useChatCompletion, GPT35 } from 'openai-streaming-hooks';
 
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
+
 export async function POST(request) {
   const body = await request.json();
   const { userPrompt, about, tone, targetedPlatforms } = body;
@@ -41,11 +42,48 @@ export async function POST(request) {
         ],
         model: "gpt-3.5-turbo",
       });
+      // console.log('openai res: ', completion, '\n\n########################## \n \n')
+      
+      // const [messages, submitMessage] = useChatCompletion({
+      //   messages: [
+      //     {
+      //       role: "system",
+      //       content: systemMessage,
+      //     },
+      //     { role: "user", content: userPrompt },
+      //     { role: "user", content: about },
+      //   ],
+      //   model: 'gpt-3.5-turbo',
+      //   apiKey: process.env.OPEN_AI_KEY,
+      // });
+
+      // submitMessage();
+
+      // const stream = await OpenAI("chat", {
+      //   model: "gpt-3.5-turbo",
+      //   messages: [
+      //     {
+      //       role: "system",
+      //       content: "You are a helpful assistant that translates English to French.",
+      //     },
+      //     {
+      //       role: "user",
+      //       content: 'Translate the following English text to French: "Hello world!"',
+      //     },
+      //   ],
+      // });
+
+
+      // console.log('api done')
+      // console.log('openai stream res: ', stream, '\n\n########################## \n \n')
+      
+      
+
       res.push({
         platform: platform,
         text: completion.choices[0].message.content,
       });
-      // console.log('resp.',res)
+      console.log('resp.',res)
     } catch (e) {
       console.log("OPENAI", e);
       return new NextResponse("Internal Error", { status: 500 });

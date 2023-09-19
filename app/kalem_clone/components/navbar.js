@@ -19,7 +19,6 @@ const Navbar = () => {
                     src="/images/nasher_logo.png"
                     width={187}
                     height={46}
-                    alt={"logo"}
                     />
                 </div>
             </div>

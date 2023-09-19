@@ -10,7 +10,7 @@ const TONES = [
     {value: 'comedy', name: 'كوميدي'},
 ]
 
-export default function Dropdown({ control, selected, name }) {
+export default function Dropdown({ control, name, isMobile }) {
     // const [selected, setSelected] = useState(null)
 
     return (
@@ -24,12 +24,13 @@ export default function Dropdown({ control, selected, name }) {
                         <div className="relative inline-block text-right">
 
                         {/* Dropdown Button */}
-                        <Listbox.Button className="w-[192px] h-[40px] p-2 bg-inner-grey rounded-xl shadow justify-between items-center gap-[22px] inline-flex"
+                        <Listbox.Button className={`${isMobile? 'w-full h-[68px]':'w-[192px] h-[40px]'} p-5 bg-inner-grey rounded-xl shadow justify-between items-center gap-[22px] inline-flex`}
                                     onClick={() => console.log('selected: ', field.value)}>
                             {/* Text */}
                             <div className={`text-right 
-                                ${field.value == null? 'text-zinc-500': 'text-white'} 
-                                text-[12px] font-bold leading-tight`}
+                                ${field.value == null? 'text-zinc-500': 'text-white'}
+                                ${isMobile? 'text-[14px]': 'text-[12px]'}  
+                                 font-bold leading-tight`}
                                 >
                                     {field.value == null ? "نـــبرة الخطاب" : field.value.name}
                             </div>
@@ -51,18 +52,15 @@ export default function Dropdown({ control, selected, name }) {
                             >
 
                             {/* Dropdown Menu */}
-                            <Listbox.Options className="absolute right-0 z-10 mt-2 w-[192px] origin-top-right rounded-xl bg-inner-grey shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Listbox.Options className={`${isMobile? 'border border-white/20 shadow bg-[#1f1f1f]': 'bg-inner-grey'} absolute right-0 z-10 mt-2 w-full origin-top-right rounded-xl  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}>
                                 <div className="p-2">
                                     {TONES.map((tone, index) => (
                                         <Listbox.Option
                                         key={index}
                                         className={({ active }) =>
-                                            `relative block px-4 py-2 text-md text ${
-                                            active 
-                                                ? 'bg-outer-grey bg-opacity-80 text-accent-foreground rounded-lg' 
-                                                : 'text-white'
-                                            }`
-                                        }
+                                            `relative block px-4 py-2 ${active 
+                                                ? 'bg-outer-grey bg-opacity-80 text-accent-foreground rounded-lg' : 'text-white'}
+                                                ${isMobile? 'text-xl':'text-md'}`}
                                         value={tone}
                                         >
                                             {({ selected }) => (
