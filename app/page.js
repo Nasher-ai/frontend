@@ -71,7 +71,6 @@ export default function Page() {
 
                     {/* Outputs */}
                     <div className="self-stretch h-auto rounded-[10px] flex-col justify-start items-end gap-[18px] flex">
-                        <Response icon={SUPPORTED_SOCIAL_MEDIA['linkedin']['iconClass']} text={'lorem'} isMobile={isMobile} />
                         {
                         Object.values(responses).map(response => (
                             <Response 

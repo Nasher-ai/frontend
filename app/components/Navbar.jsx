@@ -19,7 +19,7 @@ export default function Navbar({ isMobile }) {
             </div>
 
             {/* Preorder Button */}
-            <button className={`${isMobile? ' w-[160px] h-[63px]': ''} px-[8px] self-stretch bg-gradient-to-r from-blue-begin to-blue-end rounded-[7px] flex-col justify-center items-center gap-3 inline-flex`}>
+            {isMobile? <></>: <button className={`${isMobile? ' w-[160px] h-[63px]': ''} px-[8px] self-stretch bg-gradient-to-r from-blue-begin to-blue-end rounded-[7px] flex-col justify-center items-center gap-3 inline-flex`}>
                 <div 
                   className="justify-center items-center gap-2.5 inline-flex"
                   onClick={() => {
@@ -28,7 +28,7 @@ export default function Navbar({ isMobile }) {
                 >
                     <div className={`${isMobile? 'text-xs': 'text-base'} text-center text-zinc-300 font-bold leading-7`}>سجل في الإطلاق المسبق</div>
                 </div>
-            </button>
+            </button>}
             
         </div>
     );
