@@ -51,8 +51,8 @@ export default function Response({ icon, text, isMobile }) {
 
             <div className="grow shrink basis-0 h-auto p-6 bg-inner-grey rounded-[10px] shadow items-start gap-2.5 flex">
                 <div className="text-right text-white text-opacity-50 text-sm font-semibold leading-normal">
-                    {aiMessage}
-                    {/* {text} */}
+                    {/* {aiMessage} */}
+                    {text}
                 </div>
             </div>
             

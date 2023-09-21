@@ -1,10 +1,23 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-// import { useChatCompletion, GPT35 } from 'openai-streaming-hooks';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPEN_AI_KEY,
-});
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { Configuration, OpenAIApi } from 'openai-edge'
+
+// const openai = new OpenAI({
+//   apiKey: process.env.OPEN_AI_KEY,
+// });
+
+// Create an OpenAI API client (that's edge friendly!)
+const config = new Configuration({
+  apiKey: process.env.OPEN_AI_KEY
+})
+const openai = new OpenAIApi(config)
+
+
+// IMPORTANT! Set the runtime to edge
+export const runtime = 'edge'
+
 
 export async function POST(request) {
   const body = await request.json();
@@ -31,7 +44,30 @@ export async function POST(request) {
     2. Correct any errors and remove emojis if present. `;
 
     try {
-      const completion = await openai.chat.completions.create({
+      // const completion = await openai.chat.completions.create({
+        // messages: [
+        //   {
+        //     role: "system",
+        //     content: systemMessage,
+        //   },
+        //   { role: "user", content: userPrompt },
+        //   { role: "user", content: about },
+        // ],
+      //   model: "gpt-3.5-turbo",
+      // });
+      
+      // messages = [
+      //   {
+      //     role: "system",
+      //     content: systemMessage,
+      //   },
+      //   { role: "user", content: userPrompt },
+      //   { role: "user", content: about },
+      // ]
+
+      const response = await openai.createChatCompletion({
+        model: 'gpt-3.5-turbo',
+        stream: true,
         messages: [
           {
             role: "system",
@@ -40,49 +76,24 @@ export async function POST(request) {
           { role: "user", content: userPrompt },
           { role: "user", content: about },
         ],
-        model: "gpt-3.5-turbo",
-      });
-      // console.log('openai res: ', completion, '\n\n########################## \n \n')
-      
-      // const [messages, submitMessage] = useChatCompletion({
-      //   messages: [
-      //     {
-      //       role: "system",
-      //       content: systemMessage,
-      //     },
-      //     { role: "user", content: userPrompt },
-      //     { role: "user", content: about },
-      //   ],
-      //   model: 'gpt-3.5-turbo',
-      //   apiKey: process.env.OPEN_AI_KEY,
-      // });
-
-      // submitMessage();
-
-      // const stream = await OpenAI("chat", {
-      //   model: "gpt-3.5-turbo",
-      //   messages: [
-      //     {
-      //       role: "system",
-      //       content: "You are a helpful assistant that translates English to French.",
-      //     },
-      //     {
-      //       role: "user",
-      //       content: 'Translate the following English text to French: "Hello world!"',
-      //     },
-      //   ],
-      // });
+      })
 
 
-      // console.log('api done')
-      // console.log('openai stream res: ', stream, '\n\n########################## \n \n')
-      
-      
+      // Convert the response into a friendly text-stream
+      const stream = OpenAIStream(response)
+      // Respond with the stream
+
+      console.log("type: ", typeof new StreamingTextResponse(stream))
 
       res.push({
         platform: platform,
-        text: completion.choices[0].message.content,
+        text: 'new StreamingTextResponse(stream)',
       });
+
+      // res.push({
+      //   platform: platform,
+      //   text: completion.choices[0].message.content,
+      // });
       console.log('resp.',res)
     } catch (e) {
       console.log("OPENAI", e);
