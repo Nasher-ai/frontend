@@ -1,43 +1,52 @@
 {
-  "name": "my-app",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-brands-svg-icons": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18",
-    "@mui/material": "^5.14.8",
-    "@next/font": "^13.4.19",
-    "@radix-ui/react-checkbox": "^1.0.4",
-    "ai": "^2.2.13",
-    "clsx": "^2.0.0",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.18",
-    "next": "^13.4.19",
-    "openai": "^4.6.0",
-    "openai-edge": "^1.2.2",
-    "openai-streaming-hooks": "github:jonrhall/openai-streaming-hooks",
-    "openai-streams": "^6.2.0",
+    "@nextui-org/react": "^2.2.9",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.79",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "framer-motion": "^11.0.3",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.46.1",
-    "react-responsive": "^9.0.2",
-    "react-spinners": "^0.13.8"
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "5.0.1",
+    "sort-by": "^1.2.0",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.29",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.4.1"
   }
 }
