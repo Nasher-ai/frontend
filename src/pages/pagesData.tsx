@@ -1,3 +1,5 @@
+// import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { routerType } from "../types/router.types";
 import CheckEmailPage from "./Auth/Check Email";
 import ForgotPasswordPage from "./Auth/Forgot Password";
@@ -9,6 +11,21 @@ import VerifyPage from "./Auth/Verify";
 import FekrahPage from "./Dashboard/Fekrah";
 
 const pagesData: routerType[] = [
+  {
+    path: "/",
+    element: <Navigate to="/dashboard/fekrah" />,
+    title: "fekrah"
+  },
+  {
+    path: "/dashboard",
+    element: <Navigate to="/dashboard/fekrah" />,
+    title: "fekrah"
+  },
+  {
+    path: "/dashboard/fekrah",
+    element: <FekrahPage/>,
+    title: "fekrah"
+  },
   {
     path: "/auth/sign-up",
     element: <SignUpPage />,
@@ -44,11 +61,6 @@ const pagesData: routerType[] = [
     element: <SuccessResetPage />,
     title: "success-reset"
   },
-  {
-    path: "/dashboard/fekrah",
-    element: <FekrahPage/>,
-    title: "fekrah"
-  }
 ];
 
 export default pagesData;

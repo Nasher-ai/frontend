@@ -7,7 +7,8 @@ interface Props{
 
 export default function ExplanationContainer({promptSetter}: Props){
     return(
-        <div className='flex-1 flex pb-28 flex-col items-center justify-between'>
+        <div className='flex-1 flex pb-28 flex-col items-center justify-evenly'>
+            <div/>
             <div className='flex flex-col items-center gap-5'>
                 <div>
                 <img src={fekrahLogo} alt="" className='drop-shadow-[0_0_55px_rgba(216,146,22,0.3)]' />

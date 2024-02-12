@@ -1,4 +1,4 @@
-import { Button, Input, InputProps } from '@nextui-org/react';
+import { Button, Input, InputProps, Spinner } from '@nextui-org/react';
 
 interface Props extends InputProps{
     isLoading?: boolean
@@ -16,7 +16,7 @@ export default function PromptInput({isLoading = false, onSend = ()=>null, ...pr
                  'input': 'pl-7 pr-4 text-lg  py-4'}} 
             onKeyUp={e => e.key == 'Enter'? onSend(): null}
             endContent={
-                <Button isIconOnly onPress={onSend} isLoading={isLoading}   className='bg-white'>
+                <Button isIconOnly onPress={onSend} isLoading={isLoading} spinner={<Spinner size='sm'/>}   className='bg-white'>
                     <span className="material-symbols-rounded text-[#101010]">
                         arrow_forward
                     </span>

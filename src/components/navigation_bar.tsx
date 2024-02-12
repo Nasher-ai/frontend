@@ -10,7 +10,7 @@ export default function NavigationBar(){
     const name = 'John'
     const credit = 8
     const maxCredit = 12
-    const hideCredits = true
+    const hideUser = true
 
     return(
         <div className="bg-[#101010] flex flex-col pt-4 pb-3 px-3 justify-between rounded-xl m-2 w-60 ">
@@ -35,20 +35,21 @@ export default function NavigationBar(){
         </div>
 
         {/* User Data */}
-        <div className='flex flex-col gap-3'>
+        {hideUser ? <></>
+        :<div className='flex flex-col gap-3'>
             {/* Profile Card */}
             <div className='bg-[#1F1F1F] h-14 rounded-[0.625rem] p-3  flex justify-between'>
                 <User name={name} classNames={{'name': 'font-semibold'}}/>
                 <img src={settingsIcon} alt="" />
             </div>
             {/* Credits Card */}
-            {hideCredits ? <></> : <div className='bg-[#1F1F1F] h-[4.5rem] rounded-[0.625rem] flex flex-col p-3 items-center justify-between text-lg font-black'>
+            <div className='bg-[#1F1F1F] h-[4.5rem] rounded-[0.625rem] flex flex-col p-3 items-center justify-between text-lg font-black'>
                 <div className='flex-row flex items-center gap-2'>
                    <div className='font-bold text-base'>{credit}</div> Credits 
                 </div>
                 <Progress value={(credit / maxCredit) * 100} classNames={{indicator: "bg-white"}}/>
-            </div>}
-        </div>
+            </div>
+        </div>}
     </div>
     )
 }
