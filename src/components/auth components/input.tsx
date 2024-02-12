@@ -8,8 +8,8 @@ interface Props extends InputProps{
     // any props that come into the component
 }
 
-export default function PageInput({label, }: Props){
+export default function PageInput({label, ...props}: Props){
     return(
-        <Input size="sm" variant="bordered" label={label}  />
+        <Input size="sm" variant="bordered" label={label} {...props}/>
     )
 }

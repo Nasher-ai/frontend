@@ -4,10 +4,16 @@ import PageInput from "../../../components/auth components/input";
 import PageInputsGroup from "../../../components/auth components/inputs_group";
 import OrDivider from "../../../components/auth components/or_divider";
 import AuthPage from "../../../components/auth components/auth_page";
-import {Link, Input, Button} from "@nextui-org/react";
+import { useState } from "react";
+import {Link} from "@nextui-org/react";
 
  
  export default function SignUpPage(){
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return(
         <AuthPage gap={4} twoSide >
             {/* Create Account Text */}
@@ -21,7 +27,7 @@ import {Link, Input, Button} from "@nextui-org/react";
             </HeadingText>
 
             {/* Text Field */}
-            <div className="gap-7 flex-col flex">
+            <form className="gap-7 flex-col flex">
                 <PageInputsGroup>
                     <div className="flex-row flex gap-7">
                         <PageInput label="First name" />
@@ -34,7 +40,7 @@ import {Link, Input, Button} from "@nextui-org/react";
                 <OrDivider/>
                 <PageButton label="Continue with Google" outlined />
                 
-            </div>
+            </form>
             
             
         </AuthPage> 

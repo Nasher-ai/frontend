@@ -1,76 +1,189 @@
-import { Chip, Input, Listbox, ListboxItem, Progress, User, Button } from '@nextui-org/react';
-import logo from '../../../images/nasher_logo.svg';
-import fekrahIcon from '../../../images/fekrah_icon.svg';
-import scraperIcon from '../../../images/scraper_icon.svg';
-import rankingIcon from '../../../images/ranking_icon.svg'
-import settingsIcon from '../../../images/setting_icon.svg';
-import sendIcon from '../../../images/send_icon.svg';   
-import fekrahLogo from '../../../images/fekrah_logo.svg';
+// import fekrahChat from '../../../handlers/auth/fekrah_chat';
+// import { useState, useRef, useEffect } from 'react';
+// import ChatMessage from '../../../components/fekrah/chat_message';
+// import ExplanationContainer from '../../../components/fekrah/explanation_container';
+// import PromptInput from '../../../components/fekrah/prompt_input';
+// import NavigationBar from '../../../components/navigation_bar';
 
-export default function FekrahPage(){
-    const name = 'Abdulaziz'
-    const credit = 8
-    const maxCredit = 12
-    const hideCredits = true
+// interface MessageProps {
+//     id: number;
+//     text: string;
+//     isRes: boolean;
+// }
 
-    return(
-        <div className="flex flex-row h-screen">
-            {/* Navigation Bar */}
-            <div className="bg-[#101010] flex flex-col pt-4 pb-3 px-3 justify-between rounded-xl m-2 w-60 ">
-                <div>
-                    {/* Logo */}
-                    <img src={logo} alt="Nasher" className='px-4 pb-9'/>
+// export default function FekrahPage(){
+//     const [prompt, setPrompt] = useState('')
+//     const [chat, setChat] = useState<MessageProps[]>([
+//         {id: 1, isRes: false, text: 'Write about war'},
+//         {id: 2, isRes: true, text: `Certainly! War is a state of armed conflict between different nations or groups. It is a complex and multifaceted event that can have wide-ranging impacts on societies, economies, and political systems.
 
-                    {/* Navigation */}
-                    <div>
-                        <Listbox disabledKeys={['scraper', 'analytics']} classNames={{list: 'gap-3'}}>
-                            <ListboxItem startContent={<img src={fekrahIcon} alt=''/>} key='fekrah' className='font-semibold'>
-                                Fekrah
-                            </ListboxItem>
-                            <ListboxItem startContent={<img src={scraperIcon} alt=''/>} key='scraper' className='font-semibold' endContent={<Chip color='primary' variant='flat' size='sm'>Coming Soon</Chip>}>
-                                Scraper
-                            </ListboxItem>
-                            <ListboxItem startContent={<img src={rankingIcon} alt=''/>} key='analytics' className='font-semibold' endContent={<Chip color='primary' variant='flat' size='sm'>Coming Soon</Chip>}>
-                                Analytics
-                            </ListboxItem>
-                        </Listbox>
-                    </div>
-                </div>
+//         Wars can be fought for a variety of reasons, including territorial disputes, ideological differences, or the desire for power and resources. The causes of war are often rooted in long-standing conflicts or grievances between nations or groups.
 
-                {/* User Data */}
-                <div className='flex flex-col gap-3'>
-                    {/* Profile Card */}
-                    <div className='bg-[#1F1F1F] h-14 rounded-[0.625rem] p-3  flex justify-between'>
-                        <User name={name} classNames={{'name': 'font-semibold'}}/>
-                        <img src={settingsIcon} alt="" />
-                    </div>
-                    {/* Credits Card */}
-                    {hideCredits ? <></> : <div className='bg-[#1F1F1F] h-[4.5rem] rounded-[0.625rem] flex flex-col p-3 items-center justify-between text-lg font-black'>
-                        <div className='flex-row flex items-center gap-2'>
-                           <div className='font-bold text-base'>{credit}</div> Credits 
-                        </div>
-                        <Progress value={(credit / maxCredit) * 100} classNames={{indicator: "bg-white"}}/>
-                    </div>}
-                </div>
-            </div>
-            <div className='flex-1 my-11 mx-16 gap-28 items-center justify-end flex flex-col'>
-                <div className='flex-1 flex flex-col items-center justify-between'>
-                    <div className='flex flex-col items-center gap-5'>
-                       <div>
-                        <img src={fekrahLogo} alt="" className='drop-shadow-[0_0_55px_rgba(216,146,22,0.3)]' />
-                    </div>
-                    <p className='font-mulish font-extrabold text-center w-8/12 text-2xl'>A brainstorming chat AI tool facilitates collaborative idea generation through real-time conversation</p> 
-                    </div>
-                    
-                    {/* Suggestions */}
-                    <div className='flex flex-row gap-2'>
-                        <Button variant='ghost' radius='full'>Write about war</Button>
-                        <Button variant='ghost' radius='full'>Write about health care</Button>
-                        <Button variant='ghost' radius='full'>Write about Sport</Button>
-                    </div>
-                </div>
-                <Input variant='faded' placeholder='Write to Fekrah what is in your mind' classNames={{'inputWrapper': 'rounded-2xl h-[3.5rem] bg-[#101010]', 'input': 'pl-7 pr-5 py-4 text-lg  py-4'}} endContent={<img className='h-9' src={sendIcon} alt=''/>}/>
-            </div>
+//         During a war, military forces engage in combat, utilizing a range of weapons, strategies, and tactics to gain an advantage over the enemy. The outcome of a war is determined by a combination of factors, including the strength and capability of the opposing forces, available resources, and the support of the civilian population.
+
+//         Wars have significant social, economic, and political consequences. They result in the loss of human lives, destruction of infrastructure, displacement of populations, and the disruption of economies. The impact of war can be felt for generations, as societies struggle to rebuild and recover from the devastation.
+
+//         War also has a profound effect on societies, leading to changes in political systems, cultural norms, and international relations. It can reshape geopolitical boundaries, alter power dynamics, and influence global affairs.
+
+//         Throughout history, there have been numerous wars that have had a profound impact on the world. Some notable examples include World War I, World War II, the Cold War, and ongoing conflicts in the Middle East. These wars have shaped the course of history, leaving a lasting impact on the lives of millions of people.
+
+//         Efforts have been made to prevent and mitigate the effects of war. International organizations, such as the United Nations, aim to promote peace, resolve conflicts diplomatically, and provide humanitarian aid to war-affected areas. However, war continues to be a reality in many parts of the world, underscoring the complex nature of human conflict and the challenges of maintaining peace.
+//         `}
+//     ]);
+//     const [isLoading, setIsLoading] = useState(false)
+//     const messageContainerRef = useRef<HTMLDivElement>(null);
+
+//     useEffect(() => {
+//         if (messageContainerRef.current) {
+//             messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+//         }
+//     }, [chat]);
+
+//     const handelSend = async () => {
+//         // if(event.key !== 'Enter') return
+//         if (prompt.trim() === '') return;
+
+//         const message: MessageProps = {
+//             id: chat.length + 1,
+//             text: prompt,
+//             isRes: false, // Assuming the user sends the message
+//         };
+
+//         setChat(prevChat => [...prevChat, message])
+//         setPrompt('')
+
+//         console.log('getting response')
+//         setIsLoading(true)
+//         const res = await fekrahChat(prompt)
+//         const response: MessageProps = {
+//             id: chat.length + 1,
+//             text: res,
+//             isRes: true, // Assuming the user sends the message
+//         }
+//         setChat(prevChat => [...prevChat, response])
+//         setIsLoading(false)
+
+//     }
+
+//     return(
+//         <div className="flex flex-row ">
+//             {/* Navigation Bar */}
+//             {/* <NavigationBar/> */}
+
+//             {/* Chat Container */}
+//             <div  className=' my-11 mx-16  items-center h-full w-full justify-end flex flex-col'>
+//                 {chat.length === 0
+//                 // Explanation
+//                 ? <ExplanationContainer promptSetter={setPrompt}/>
+
+//                 // Chat
+//                 : <div ref={messageContainerRef} className='flex flex-col overflow-y-auto pb-8 flex-1 gap-6 justify-end'>
+//                     {chat.map((message: MessageProps) => (
+//                         <ChatMessage aiResponse={message.isRes}>{message.text}</ChatMessage>
+//                     ))}
+//                   </div>
+//                 }
+//                 {/* Input Field */}
+//                 <PromptInput
+//                     isLoading={isLoading}
+//                     onValueChange={value => setPrompt(value)}
+//                     onSend={handelSend}
+//                     value={prompt}
+//                 />
+//             </div>
+//         </div>
+//     )
+// }
+
+import fekrahChat from "../../../handlers/auth/fekrah_chat";
+import { useState, useRef, useEffect } from "react";
+import ChatMessage from "../../../components/fekrah/chat_message";
+import ExplanationContainer from "../../../components/fekrah/explanation_container";
+import PromptInput from "../../../components/fekrah/prompt_input";
+import NavigationBar from "../../../components/navigation_bar";
+
+interface MessageProps {
+  id: number;
+  text: string;
+  isRes: boolean;
+}
+
+export default function FekrahPage() {
+  const [prompt, setPrompt] = useState("");
+  const [chat, setChat] = useState<MessageProps[]>([
+    { id: 1, isRes: false, text: "Write about war" },
+    {
+      id: 2,
+      isRes: true,
+      text: `Certainly! War is a state of armed conflict between different nations or groups. It is a complex and multifaceted event that can have wide-ranging impacts on societies, economies, and political systems.
+
+        Wars can be fought for a variety of reasons, including territorial disputes, ideological differences, or the desire for power and resources. The causes of war are often rooted in long-standing conflicts or grievances between nations or groups.
+        
+        During a war, military forces engage in combat, utilizing a range of weapons, strategies, and tactics to gain an advantage over the enemy. The outcome of a war is determined by a combination of factors, including the strength and capability of the opposing forces, available resources, and the support of the civilian population.
+        
+        Wars have significant social, economic, and political consequences. They result in the loss of human lives, destruction of infrastructure, displacement of populations, and the disruption of economies. The impact of war can be felt for generations, as societies struggle to rebuild and recover from the devastation.
+        
+        War also has a profound effect on societies, leading to changes in political systems, cultural norms, and international relations. It can reshape geopolitical boundaries, alter power dynamics, and influence global affairs.
+        
+        Throughout history, there have been numerous wars that have had a profound impact on the world. Some notable examples include World War I, World War II, the Cold War, and ongoing conflicts in the Middle East. These wars have shaped the course of history, leaving a lasting impact on the lives of millions of people.
+        
+        Efforts have been made to prevent and mitigate the effects of war. International organizations, such as the United Nations, aim to promote peace, resolve conflicts diplomatically, and provide humanitarian aid to war-affected areas. However, war continues to be a reality in many parts of the world, underscoring the complex nature of human conflict and the challenges of maintaining peace.
+        `,
+    },
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const messageContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messageContainerRef.current) {
+      messageContainerRef.current.scrollTop =
+        messageContainerRef.current.scrollHeight;
+    }
+  }, [chat]);
+
+  const handelSend = async () => {
+    // if(event.key !== 'Enter') return
+    if (prompt.trim() === "") return;
+
+    const message: MessageProps = {
+      id: chat.length + 1,
+      text: prompt,
+      isRes: false, // Assuming the user sends the message
+    };
+
+    setChat((prevChat) => [...prevChat, message]);
+    setPrompt("");
+
+    console.log("getting response");
+    setIsLoading(true);
+    const res = await fekrahChat(prompt);
+    const response: MessageProps = {
+      id: chat.length + 1,
+      text: res,
+      isRes: true, // Assuming the user sends the message
+    };
+    setChat((prevChat) => [...prevChat, response]);
+    setIsLoading(false);
+  };
+
+  const chatView = chat.map((message: MessageProps) => (
+            <ChatMessage aiResponse={message.isRes}>{message.text}</ChatMessage>
+          ))
+  const textfield = <PromptInput
+          isLoading={isLoading}
+          onValueChange={(value) => setPrompt(value)}
+          onSend={handelSend}
+          value={prompt}
+        />
+
+  return (
+    <div className="flex flex-row h-full w-full overflow-hidden ">
+      <div className=" flex flex-col h-full max-w-full flex-1 overflow-auto">
+        <div className="flex-col gap-6 overflow-y-auto">
+          {chatView}
         </div>
-    )
+        {textfield}
+      </div>
+    </div>
+  );
 }

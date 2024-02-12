@@ -31,7 +31,7 @@ export default function AuthPage({
 
                         {/* Image */}
                         <div className="w-[60%] max-w-64">
-                            <img src={image} alt="image" />
+                            <img src={image} alt="" />
                         </div>
 
                         {/* Bottom Text */}
