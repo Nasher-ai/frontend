@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const loginUser = async (email: string, password: string) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/signup/', { email, password });
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup/`, { email, password });
     return response.data; // Assuming your API returns useful data upon login
   } catch (error) {
     console.error('Error:', error);

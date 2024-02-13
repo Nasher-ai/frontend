@@ -61,7 +61,7 @@ export default function FekrahPage() {
         ? <ExplanationContainer promptSetter={setPrompt} isMobile={isMobile}/> 
         : <div ref={messageContainerRef} className="overflow-auto flex-col flex gap-3 py-11 px-5  lg:px-20">
             {chat.map((message: MessageProps) => (
-              <ChatMessage aiResponse={message.isRes}>{message.text} </ChatMessage>
+              <ChatMessage key={message.id} aiResponse={message.isRes}>{message.text} </ChatMessage>
             ))}
           </div>}
         <div className="w-full flex flex-row justify-center">
