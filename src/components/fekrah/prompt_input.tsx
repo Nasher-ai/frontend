@@ -13,7 +13,7 @@ export default function PromptInput({isLoading = false, onSend = ()=>null, ...pr
             classNames={
                 {'inputWrapper': 'rounded-2xl h-[3rem] md:h-[3.5rem] bg-[#101010]',
                  'input': 'pl-7 pr-4 text-lg  py-4'}} 
-            onKeyUp={e => e.key == 'Enter'? onSend(): null}
+            onKeyUp={e => e.key === 'Enter'? onSend(): null}
             endContent={
                 <Button isIconOnly onPress={onSend} isLoading={isLoading} className='bg-white' spinner={<Spinner size='sm' color='default'/>}>
                     <span className="material-symbols-rounded text-[#101010]">

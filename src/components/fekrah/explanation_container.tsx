@@ -1,4 +1,3 @@
-import { Button } from '@nextui-org/react';
 import fekrahLogo from '../../images/fekrah_logo.svg';
 import SuggestChip from './suggest_chip';
 
