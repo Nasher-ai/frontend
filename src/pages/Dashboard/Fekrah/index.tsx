@@ -5,6 +5,7 @@ import ExplanationContainer from "../../../components/fekrah/explanation_contain
 import PromptInput from "../../../components/fekrah/prompt_input";
 import SideBar from "../../../components/side_bar";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import NavigationBar from "../../../components/navigation_bar";
 
 
 interface MessageProps {
@@ -16,7 +17,7 @@ interface MessageProps {
 export default function FekrahPage() {
   const [prompt, setPrompt] = useState("");
   const [chat, setChat] = useState<MessageProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const messageContainerRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery('(max-width:768px)')
 
@@ -53,24 +54,27 @@ export default function FekrahPage() {
   };
 
   return (
-    <div className="flex flex-row h-screen w-full overflow-hidden">
-      {isMobile ? <></> : <SideBar/>}
-      <div className=" flex-col flex justify-between max-w-full flex-1 ">
+    <div className="flex md:flex-row h-screen w-full ">
+      {isMobile ? <NavigationBar/> : <SideBar/>}
+      <div className=" flex-col pt-20 md:pt-0 flex justify-between max-w-full flex-1 ">
         {chat.length === 0 
-        ? <ExplanationContainer promptSetter={setPrompt}/> 
-        : <div ref={messageContainerRef} className="overflow-auto flex-col flex gap-3 py-11 px-20">
+        ? <ExplanationContainer promptSetter={setPrompt} isMobile={isMobile}/> 
+        : <div ref={messageContainerRef} className="overflow-auto flex-col flex gap-3 py-11 px-5  lg:px-20">
             {chat.map((message: MessageProps) => (
-              <ChatMessage aiResponse={message.isRes}>{message.text}</ChatMessage>
+              <ChatMessage aiResponse={message.isRes}>{message.text} </ChatMessage>
             ))}
           </div>}
-        <div className="pb-11 px-16 ">
-          <PromptInput
-            isLoading={isLoading}
-            onValueChange={(value) => setPrompt(value)}
-            onSend={handelSend}
-            value={prompt}
-          />
+        <div className="w-full flex flex-row justify-center">
+          <div className="stretch mx-2 mb-6 gap-3 md:mx-4 lg:max-w-4xl 2xl:max-w-5xl w-full">
+            <PromptInput
+              isLoading={isLoading}
+              onValueChange={(value) => setPrompt(value)}
+              onSend={handelSend}
+              value={prompt}
+            />
+          </div>
         </div>
+        
       </div>
     </div>
   );

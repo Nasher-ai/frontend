@@ -11,7 +11,7 @@ export default function PromptInput({isLoading = false, onSend = ()=>null, ...pr
             variant='faded' 
             placeholder='Write to Fekrah what is in your mind' 
             classNames={
-                {'inputWrapper': 'rounded-2xl h-[3.5rem] bg-[#101010]',
+                {'inputWrapper': 'rounded-2xl h-[3rem] md:h-[3.5rem] bg-[#101010]',
                  'input': 'pl-7 pr-4 text-lg  py-4'}} 
             onKeyUp={e => e.key == 'Enter'? onSend(): null}
             endContent={
