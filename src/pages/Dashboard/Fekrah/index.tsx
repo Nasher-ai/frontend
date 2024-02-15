@@ -109,7 +109,7 @@ export default function FekrahPage() {
               <SuggestChip text='Write about Sport' callback={setPrompt} isMobile={isMobile}/>
             </div>
           </div>}  
-          <div className=" w-full flex flex-row justify-center relative">
+          <div className=" w-full bg-black flex flex-row justify-center relative">
             <div className="mx-2 mb-6 md:mx-4 w-full p-2 lg:max-w-4xl 2xl:max-w-5xl ">
               <PromptInput
               isLoading={isLoading}
