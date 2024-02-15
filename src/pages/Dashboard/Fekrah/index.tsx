@@ -88,7 +88,7 @@ export default function FekrahPage() {
       {isMobile ? <NavigationBar/> : <SideBar/>}
 
       {/* Chat Container */}
-      <div className=" flex-col relative  flex justify-between max-w-full flex-1 ">
+      <div className=" flex-col relative  flex justify-between max-w-full flex-1 overflow-hidden">
         {chat.length === 0 
         ? <ExplanationContainer promptSetter={setPrompt} isMobile={isMobile}/> 
         : <div ref={messageContainerRef} className="overflow-auto flex-col flex pt-24 md:pt-0 gap-3 py-11 px-5  lg:px-20">
