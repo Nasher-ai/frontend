@@ -8,9 +8,9 @@ interface Props{
 
 export default function SuggestChip({text, callback, isMobile}: Props){
     return(
-        <Button variant='ghost' radius='full' size={isMobile? 'sm': 'md'}
-        onPress={() => callback(text)}>
+        <button className="border px-3.5 text-sm md:text-base py-2 md text-nowrap rounded-full border-[#3f3f46] bg-black"
+        onClick={() => callback(text)}>
             {text}
-        </Button>
+        </button>
     )
 }
