@@ -1,4 +1,4 @@
-import { Button, Input, InputProps, Spinner } from '@nextui-org/react';
+import { Input, InputProps } from '@nextui-org/react';
 
 interface Props extends InputProps{
     isLoading?: boolean

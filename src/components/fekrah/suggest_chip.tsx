@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 
 interface Props{
     text: string;

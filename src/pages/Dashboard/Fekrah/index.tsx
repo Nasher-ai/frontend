@@ -54,29 +54,29 @@ export default function FekrahPage() {
     setIsLoading(false);
   };
 
-const textfield = <div className=" bottom-0 flex flex-col justify-center w-full ">  
-<div className="relative z-10">
-  {/* Suggestions */}
-  <div className=" w-full flex flex-row justify-center ">
-    <div className='flex  bottom-full  mb-20 flex-row gap-2'>
-        <SuggestChip text='Write about war' callback={setPrompt} isMobile={isMobile}/>
-        <SuggestChip text='Write about health care' callback={setPrompt} isMobile={isMobile}/>
-        <SuggestChip text='Write about Sport' callback={setPrompt} isMobile={isMobile}/>
-    </div>
-  </div>
-  {/* Prompt Input */}
-  <div className="w-full flex flex-row justify-center ">
-    <div className=" mx-2 mb-6 gap-3 md:mx-4 lg:max-w-4xl 2xl:max-w-5xl">
-      <PromptInput
-        isLoading={isLoading}
-        onValueChange={(value) => setPrompt(value)}
-        onSend={handelSend}
-        value={prompt}
-      />
-    </div>
-  </div>
-</div> 
-</div> 
+// const textfield = <div className=" bottom-0 flex flex-col justify-center w-full ">  
+// <div className="relative z-10">
+//   {/* Suggestions */}
+//   <div className=" w-full flex flex-row justify-center ">
+//     <div className='flex  bottom-full  mb-20 flex-row gap-2'>
+//         <SuggestChip text='Write about war' callback={setPrompt} isMobile={isMobile}/>
+//         <SuggestChip text='Write about health care' callback={setPrompt} isMobile={isMobile}/>
+//         <SuggestChip text='Write about Sport' callback={setPrompt} isMobile={isMobile}/>
+//     </div>
+//   </div>
+//   {/* Prompt Input */}
+//   <div className="w-full flex flex-row justify-center ">
+//     <div className=" mx-2 mb-6 gap-3 md:mx-4 lg:max-w-4xl 2xl:max-w-5xl">
+//       <PromptInput
+//         isLoading={isLoading}
+//         onValueChange={(value) => setPrompt(value)}
+//         onSend={handelSend}
+//         value={prompt}
+//       />
+//     </div>
+//   </div>
+// </div> 
+// </div> 
 
 
 
