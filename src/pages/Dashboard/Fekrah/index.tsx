@@ -58,13 +58,13 @@ export default function FekrahPage() {
 
 
   return (
-    <div className="flex md:flex-row  h-screen w-full overflow-hidden">
+    <div className="flex md:flex-row  h-screen w-full ">
       {isMobile ? <NavigationBar/> : <SideBar/>}
 
       {/* main Container */}
-      <div className=" flex-col flex relative max-w-full flex-1 overflow-hidden">
+      <div className=" flex-col flex pt:mt-20 md:pt-4 relative max-w-full flex-1 ">
         {chat.length === 0 
-        ? <ExplanationContainer promptSetter={setPrompt} isMobile={isMobile}/> 
+        ? <ExplanationContainer /> 
         : <PageChatView ref={messageContainerRef} chat={chat}/>}
         {/* // <div ref={messageContainerRef} className="overflow-auto flex-col flex pt-24 md:pt-0 gap-3 py-11 px-5  lg:px-20">
         //     {chat.map((message: MessageProps) => (
@@ -76,7 +76,7 @@ export default function FekrahPage() {
         //     ))}
         //   </div>} */}
 
-        <div className=" md:absolute fixed flex flex-col items-center w-full bottom-0">
+        <div className=" md:absolute bg-black fixed flex flex-col items-center w-full bottom-0">
           {chat.length !== 0 ? <></> :
           <div className="w-full flex flex-row justify-center">
             <div className='bottom-full w-full max-w-xs md:max-w-none mx-14 md:mx-0 md:w-min mb-11 md:mb-16 flex flex-col  md:flex-row gap-3 md:gap-1.5 items-stretch'>
@@ -86,10 +86,13 @@ export default function FekrahPage() {
             </div>
           </div>}  
           <div className="w-full lg:max-w-4xl 2xl:max-w-5xl">
-            <div className="mx-2 mb-6 md:mx-4 p-2  ">
+            <div className="mx-2 mb-6 md:mx-4 pb-2  ">
               <PromptInput
+                isMobile={isMobile}
                 isLoading={isLoading}
-                onValueChange={(value) => setPrompt(value)}
+                promptSetter={setPrompt}
+                // onChange={(e) => setPrompt(e.currentTarget.value)}
+                //  onInput={(e) => setPrompt(e.currentTarget.value)}
                 onSend={handelSend}
                 value={prompt}/>
             </div>

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 async function fekrahChat(prompt: string) {
   try {
+    console.log('prompt: ', prompt)
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/fekrah/chat/`, {'user_input': prompt});
     console.log(response)
     // If the request is successful, return the response data

@@ -8,7 +8,7 @@ interface Props{
 
 export default function PageChatView({ref, chat}: Props){
     return(
-        <div ref={ref} className="overflow-auto flex-col flex pt-24 md:pt-8 gap-3 py-11 px-5  lg:px-20">
+        <div ref={ref} className="overflow-auto flex-col mt-20 md:mt-0 flex gap-3 py-6 md:py-11 px-5 lg:px-20">
             {chat.map((message: MessageProps) => (
                 <ChatMessage 
                 key={message.id}
