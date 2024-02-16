@@ -1,6 +1,5 @@
 import fekrahChat from "../../../handlers/auth/fekrah_chat";
 import { useState, useRef, useEffect } from "react";
-import ChatMessage from "../../../components/fekrah/chat_message";
 import ExplanationContainer from "../../../components/fekrah/explanation_container";
 import PromptInput from "../../../components/fekrah/prompt_input";
 import SideBar from "../../../components/side_bar";
