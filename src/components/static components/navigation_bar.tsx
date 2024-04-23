@@ -1,4 +1,4 @@
-import logo from '../images/nasher_logo.svg';
+import logo from '../../images/nasher_logo.svg';
 
 
 export default function NavigationBar(){

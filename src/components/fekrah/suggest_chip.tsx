@@ -7,7 +7,7 @@ interface Props{
 
 export default function SuggestChip({text, callback, isMobile}: Props){
     return(
-        <button className="border px-3.5 text-sm md:text-base py-2 md text-nowrap rounded-full border-[#3f3f46] bg-black"
+        <button className="border px-3.5 text-sm md:text-base py-2 md text-nowrap rounded-full border-[#3f3f46] bg-transparent"
         onClick={() => callback(text)}>
             {text}
         </button>
