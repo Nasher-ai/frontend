@@ -11,11 +11,21 @@ import loginUser from "../../../handlers/auth/login";
 export default function LoginPage(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
+    const [isEmailMissing, setIsEmailMissing] = useState(false)
+    const [isPasswordMissing, setIsPasswordMissing] = useState(false)
 
     function handleSubmit(){
+        if(email === '' || password === '') {
+            setIsEmailMissing(email === '')
+            setIsPasswordMissing(password === '')
+            return
+        }
+
         console.log(email)
         console.log(password)
         loginUser(email, password)
+        setIsEmailMissing(false)
+        setIsPasswordMissing(false)
     }
 
     return(
@@ -28,8 +38,8 @@ export default function LoginPage(){
             </HeadingText>
             <form onSubmit={handleSubmit}  className="flex flex-col gap-7">
                 <PageInputsGroup>
-                    <PageInput label="Email" onValueChange={value => setEmail(value)} isRequired type="email"/>
-                    <PageInput label="Password" onValueChange={value => setPassword(value)} isRequired type="password"/>
+                    <PageInput label="Email" onValueChange={value => setEmail(value)}  type="email" isMissing={isEmailMissing}/>
+                    <PageInput label="Password" onValueChange={value => setPassword(value)}  type="password" isMissing={isPasswordMissing}/>
                     <Link href="forgot-password" className="justify-end">
                         Forgot Password
                     </Link>

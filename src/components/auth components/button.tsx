@@ -8,7 +8,7 @@ interface Props extends ButtonProps{
 
 export default function PageButton({label, outlined = false, className, ...props}: Props){
     return(
-    <Button className={`flex font-semibold
+    <Button className={`flex font-semibold w-full
     ${outlined? 'text-white ':'text-black bg-white'} ${className}`} 
     variant={outlined? 'bordered': 'solid'} {...props}>
         {label}
