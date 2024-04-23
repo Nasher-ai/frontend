@@ -8,6 +8,8 @@ import SignUpPage from "./Auth/Sign Up";
 import SuccessResetPage from "./Auth/Success Reset";
 import VerifyPage from "./Auth/Verify";
 import FekrahPage from "./Dashboard/Fekrah";
+import DashboardPage from "./Dashboard/Dashboard";
+import SpacesPage from "./Dashboard/Spaces";
 
 const pagesData: routerType[] = [
   {
@@ -22,8 +24,8 @@ const pagesData: routerType[] = [
   },
   {
     path: "/dashboard",
-    element: <Navigate to="/dashboard/fekrah" />,
-    title: "fekrah"
+    element: <DashboardPage />,
+    title: "dashboard",
   },
   {
     path: "/dashboard/fekrah",
