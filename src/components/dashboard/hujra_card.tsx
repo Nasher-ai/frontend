@@ -5,7 +5,7 @@ type Props = {}
 
 function HujraCard({}: Props) {
   return (
-    <div className="aspect-[7/4] w-60 p-3 bg-stone-400 bg-opacity-20 rounded-[20px] flex-col justify-between items-center inline-flex">
+    <a href="/dashboard/hujra" className="aspect-[7/4] w-60 p-3 bg-stone-400 bg-opacity-20 rounded-[20px] flex-col justify-between items-center inline-flex">
       <div className="self-stretch justify-end items-center gap-2.5 inline-flex">
         <div className="w-[30px] h-[30px] p-[3px] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-[30px] backdrop-blur-[30px] flex-col justify-center items-center inline-flex">
           <img
@@ -22,7 +22,7 @@ function HujraCard({}: Props) {
           التاريخ, اخر تعديل
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

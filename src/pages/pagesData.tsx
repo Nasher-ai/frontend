@@ -10,6 +10,7 @@ import VerifyPage from "./Auth/Verify";
 import FekrahPage from "./Dashboard/Fekrah";
 import DashboardPage from "./Dashboard/Dashboard";
 import SpacesPage from "./Dashboard/Spaces";
+import HujraWhiteboardPage from "./Dashboard/Hujra/Whiteboard";
 
 const pagesData: routerType[] = [
   {
@@ -31,6 +32,11 @@ const pagesData: routerType[] = [
     path: "/dashboard/fekrah",
     element: <FekrahPage />,
     title: "fekrah",
+  },
+  {
+    path: "/dashboard/hujra",
+    element: <HujraWhiteboardPage/>,
+    title: "whiteboard"
   },
   {
     path: "/auth/sign-up",

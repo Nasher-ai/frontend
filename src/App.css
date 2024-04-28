@@ -41,3 +41,10 @@
     transform: rotate(360deg);
   }
 }
+
+@layer utilities {
+  .bg-dots {
+    background-image: radial-gradient(rgba(217, 217, 217, 0.1) 0.18rem, transparent 0.18rem);
+    background-size: 1.5rem 1.5rem; /* Adjust dot size as needed */
+  }
+}

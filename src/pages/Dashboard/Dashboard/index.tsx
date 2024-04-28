@@ -5,6 +5,8 @@ import HujraCard from "../../../components/dashboard/hujra_card";
 import NewsCard from "../../../components/dashboard/news_card";
 import BotCard from "../../../components/dashboard/bot_card";
 import ScrapedSumCard from "../../../components/dashboard/scraped_sum_card";
+import { Gauge, gaugeClasses } from "@mui/x-charts";
+import { text } from "stream/consumers";
 
 type Props = {};
 
@@ -65,8 +67,35 @@ function DashboardPage({}: Props) {
               </div>
             </SectionContainer>
             {/* Total Data Chart */}
-            <SectionContainer className="flex-[3]">
-              
+            <SectionContainer className="flex-[3] items-center justify-between flex-col py-5">
+              <Gauge
+                value={70}
+                // height={}
+                startAngle={90}
+                endAngle={450}
+                // outerRadius={58}
+                text={({ value }) => `${value}%`}
+                sx={(theme) => ({
+                  [`& .${gaugeClasses.valueText}`]: {
+                    color: "#FFF ",
+                    textShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)",
+                    fontFamily: '"IBM Plex Sans Arabic", sans-serif',
+                    fontSize: "16px",
+                    fontStyle: "normal",
+                    fontWeight: 600,
+                    lineHeight: "175.7%",
+                  },
+                  [`& .${gaugeClasses.valueArc}`]: {
+                    fill: "#fff",
+                  },
+                  [`& .${gaugeClasses.referenceArc}`]: {
+                    fill: "transparent",
+                  },
+                })}
+              />
+              <p className=" text-white text-opacity-80 mt-3 text-sm font-semibold font-['IBM Plex Sans Arabic'] leading-[17.57px]">
+                مجموع البيانات
+              </p>
             </SectionContainer>
           </div>
           <div className="flex-[2] flex gap-7">

@@ -55,7 +55,7 @@ export default function FekrahPage() {
   };
 
   return (
-    <Page className="flex-col flex pt:mt-20 md:pt-4 relative max-w-full flex-1">
+    <Page className="flex-col flex pt:mt-20 md:pt-4 relative max-w-full h-screen flex-1">
       {chat.length === 0 ? (
         <ExplanationContainer />
       ) : (
