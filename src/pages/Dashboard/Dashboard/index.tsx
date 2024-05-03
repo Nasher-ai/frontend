@@ -1,4 +1,3 @@
-import React from "react";
 import Page from "../../../components/static components/sidebar_page";
 import SectionContainer from "../../../components/dashboard/section_container";
 import HujraCard from "../../../components/dashboard/hujra_card";
@@ -6,11 +5,9 @@ import NewsCard from "../../../components/dashboard/news_card";
 import BotCard from "../../../components/dashboard/bot_card";
 import ScrapedSumCard from "../../../components/dashboard/scraped_sum_card";
 import { Gauge, gaugeClasses } from "@mui/x-charts";
-import { text } from "stream/consumers";
 
-type Props = {};
 
-function DashboardPage({}: Props) {
+function DashboardPage() {
   return (
     <Page className="p-7 inline-flex h-[140%] w-full flex-col gap-7">
       {/* TODO BUG FIX: children clipping in NavigationBar in mobile mode */}

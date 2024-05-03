@@ -1,8 +1,7 @@
 import React from 'react'
 
-type Props = {}
 
-function HujraDocViewPage({}: Props) {
+function HujraDocViewPage() {
   return (
     <div>HujraDocViewPage</div>
   )

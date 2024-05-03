@@ -1,9 +1,9 @@
 import React from "react";
 import SpaceCard from "../../../components/spaces/space_card";
 
-type Props = {};
 
-function SpacesPage({}: Props) {
+
+function SpacesPage() {
   return (
     <div className="flex-1 relative flex w-full h-screen bg-[#0F0F0F] justify-center items-center">
       <div className="flex gap-[4.5rem] flex-col items-center">
