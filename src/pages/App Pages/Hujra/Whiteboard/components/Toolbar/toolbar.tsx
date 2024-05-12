@@ -1,5 +1,5 @@
-import React from 'react'
-import ToolButton from './tool_button';
+import React from "react";
+import ToolButton from "./button";
 import { MdPostAdd } from "react-icons/md";
 import { IoShapes } from "react-icons/io5";
 import { FaPen } from "react-icons/fa";
@@ -7,12 +7,11 @@ import { FaEraser, FaNoteSticky } from "react-icons/fa6";
 import { TbTextRecognition } from "react-icons/tb";
 import { LuUpload } from "react-icons/lu";
 
-
 type Props = {
-    className?: string
-}
+  className?: string;
+};
 
-function ToolBar({className}: Props) {
+function ToolBar({ className }: Props) {
   return (
     <div
       className={
@@ -20,7 +19,6 @@ function ToolBar({className}: Props) {
         className
       }
     >
-      
       <ToolButton>
         <MdPostAdd size={25}></MdPostAdd>
       </ToolButton>
@@ -46,4 +44,4 @@ function ToolBar({className}: Props) {
   );
 }
 
-export default ToolBar
+export default ToolBar;

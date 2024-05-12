@@ -6,6 +6,7 @@ type Props = {
     key: string
     isActive?: boolean
     icon?: React.ReactNode
+    
 }
 
 /** The button of a page in the side bar. For example Dashboard, Fekrah, etc... */

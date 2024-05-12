@@ -1,4 +1,4 @@
-import fekrahLogo from '../../images/fekrah_logo.svg';
+import { fekrahLogo } from "../../static/images";
 
 export default function ExplanationContainer(){
     return(

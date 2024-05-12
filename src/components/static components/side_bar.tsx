@@ -1,18 +1,13 @@
-import logo from "../../images/nasher_logo.svg";
-import * as icons from '../../static/icons';
-import { yazanAccount } from '../../static/images';
+import * as icons from "../../static/icons";
+import { nasherLogo, userAvatar1 } from "../../static/images";
+import { exUser1 } from "../../static/sample_data";
 import NavigationItem from "./sidebar components/navigation_item";
 
 export default function SideBar() {
-  const name = "John";
-  const credit = 8;
-  const maxCredit = 12;
-  const hideUser = true;
-
   return (
     <div className="bg-[#151515]  border-e-1 border-[#222222] flex flex-col pt-8 pb-5 px-5  gap-5 w-60 ">
       {/* Logo */}
-      <img src={logo} className="px-4" alt="Nasher" />
+      <img src={nasherLogo} className="px-4" alt="Nasher" />
 
       <hr className="bg-[#D7D7D7] mx-4 opacity-60" />
 
@@ -27,14 +22,10 @@ export default function SideBar() {
         {/* Profile */}
         <div className="flex flex-row gap-3">
           {/* Image */}
-          <img
-            className="w-10 h-10 rounded-full"
-            src={yazanAccount}
-            alt=""
-          />
+          <img className="w-10 h-10 rounded-full" src={exUser1.avatar} alt="" />
           <div className="flex flex-col">
             <p className="text-white text-sm font-medium font-['IBM Plex Sans Arabic'] leading-[21.08px]">
-              يزن ابو النعاج
+              {exUser1.name}
             </p>
             <p className="text-white text-opacity-80 text-xs font-normal font-['IBM Plex Sans Arabic'] leading-[14.06px]">
               بهشة شهير

@@ -1,16 +1,16 @@
 import { Navigate } from "react-router-dom";
 import { routerType } from "../types/router.types";
-import CheckEmailPage from "./Auth/Check Email";
-import ForgotPasswordPage from "./Auth/Forgot Password";
-import LoginPage from "./Auth/Login";
-import ResetPasswordPage from "./Auth/Reset Password";
-import SignUpPage from "./Auth/Sign Up";
-import SuccessResetPage from "./Auth/Success Reset";
-import VerifyPage from "./Auth/Verify";
-import FekrahPage from "./Dashboard/Fekrah";
-import DashboardPage from "./Dashboard/Dashboard";
-import SpacesPage from "./Dashboard/Spaces";
-import HujraWhiteboardPage from "./Dashboard/Hujra/Whiteboard";
+import CheckEmailPage from "./Auth Pages/Check Email";
+import ForgotPasswordPage from "./Auth Pages/Forgot Password";
+import LoginPage from "./Auth Pages/Login";
+import ResetPasswordPage from "./Auth Pages/Reset Password";
+import SignUpPage from "./Auth Pages/Sign Up";
+import SuccessResetPage from "./Auth Pages/Success Reset";
+import VerifyPage from "./Auth Pages/Verify";
+import FekrahPage from "./App Pages/Fekrah";
+import DashboardPage from "./App Pages/Dashboard";
+import SpacesPage from "./App Pages/Spaces";
+import HujraWhiteboardPage from "./App Pages/Hujra/Whiteboard";
 
 const pagesData: routerType[] = [
   {

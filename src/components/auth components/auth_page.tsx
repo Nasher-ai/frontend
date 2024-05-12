@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import logo from '../../images/nasher_logo.svg';
-import image from '../../images/auth_image.svg'
+import { authImage, nasherLogo } from "../../static/images";
 
 interface Props {
     children?: ReactNode
@@ -26,12 +25,12 @@ export default function AuthPage({
                     <div className="flex-1 flex-col flex justify-between ">
                         {/* Logo */}
                         <div className="w-[16.5rem] ">
-                            <img src={logo} alt="Nasher"/>
+                            <img src={nasherLogo} alt="Nasher"/>
                         </div>
 
                         {/* Image */}
                         <div className="w-[60%] max-w-64">
-                            <img src={image} alt="" />
+                            <img src={authImage} alt="" />
                         </div>
 
                         {/* Bottom Text */}
@@ -48,7 +47,7 @@ export default function AuthPage({
                         
                     </div> : !hideLogo ?
                         <div className="w-[16.5rem] absolute left-8">
-                            <img src={logo} alt="Nasher"/>
+                            <img src={nasherLogo} alt="Nasher"/>
                         </div> : <></>
                 }
                 {/* Right Side */}

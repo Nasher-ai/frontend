@@ -1,16 +1,13 @@
-import React from 'react'
-import { yazanAccount } from '../../static/images';
+import React from "react";
+import { userAvatar1 } from "../../static/images";
 
-type Props = {}
+type Props = {};
 
 function NewsCard({}: Props) {
   return (
     <div className=" h-[8.5rem] px-[18px] py-4 bg-neutral-800 rounded-[20px] border border-neutral-900 flex-col justify-center gap-5 inline-flex">
       <div className="items-center gap-4 inline-flex">
-        <img
-          className="w-[45px] h-[45px] rounded-[100px]"
-          src={yazanAccount}
-        />
+        <img className="w-[45px] h-[45px] rounded-[100px]" src={userAvatar1} />
         <div className="h-[43px] flex-col justify-start inline-flex">
           <div className="text-right text-neutral-200 text-[10px] font-normal font-['IBM Plex Sans Arabic'] leading-[17.57px]">
             مشرف
@@ -19,7 +16,6 @@ function NewsCard({}: Props) {
             يزن ابو النعاج
           </div>
         </div>
-        
       </div>
       <div className="self-stretch text-right text-white text-opacity-80 text-[10px] font-light font-['IBM Plex Sans Arabic'] leading-[17.57px]">
         مرحباً جميعاً، أود أن أبلغكم بأننا أنجزنا المرحلة الأولى من المشروع
@@ -29,4 +25,4 @@ function NewsCard({}: Props) {
   );
 }
 
-export default NewsCard
+export default NewsCard;

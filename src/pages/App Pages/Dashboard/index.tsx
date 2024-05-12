@@ -9,7 +9,7 @@ import { Gauge, gaugeClasses } from "@mui/x-charts";
 
 function DashboardPage() {
   return (
-    <Page className="p-7 inline-flex overflow-y-auto w-screen flex-col gap-7">
+    <Page className="p-7 inline-flex w-screen flex-col gap-7">
       {/* TODO BUG FIX: children clipping in NavigationBar in mobile mode */}
 
       {/* Hujraat Container */}

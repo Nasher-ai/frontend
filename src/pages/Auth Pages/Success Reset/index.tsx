@@ -1,6 +1,6 @@
 import AuthPage from "../../../components/auth components/auth_page";
 import PageButton from "../../../components/auth components/button";
-import success from '../../../images/success_logo.svg';
+import { successIcon } from "../../../static/icons";
 
 export default function SuccessResetPage(){
     return(
@@ -11,7 +11,7 @@ export default function SuccessResetPage(){
                 <PageButton label="Login"/>
             </div> */}
             <div className="flex flex-col gap-5 items-center">
-                <img className="w-[7.5rem]" src={success} alt=''/>
+                <img className="w-[7.5rem]" src={successIcon} alt=''/>
                 <p className="text-lg font-semibold pb-2">Password reset successfully</p>
                 <PageButton className="w-full" label="Login"/>
             </div>

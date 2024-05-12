@@ -1,4 +1,4 @@
-import { MessageProps } from "../../pages/Dashboard/Fekrah"
+import { MessageProps } from "../../pages/App Pages/Fekrah"
 import ChatMessage from "./chat_message"
 
 interface Props{
