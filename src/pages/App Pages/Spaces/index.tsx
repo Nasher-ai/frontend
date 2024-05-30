@@ -1,5 +1,7 @@
 import React from "react";
 import SpaceCard from "../../../components/spaces/space_card";
+import { ReactSVG } from "react-svg";
+import { nasherLogo } from "../../../static/images";
 
 
 
@@ -12,13 +14,14 @@ function SpacesPage() {
           <SpaceCard />
           <SpaceCard />
         </div>
-        <span className="flex-row px-[1.125rem] w-48 py-3 bg-sky-600 rounded-[14px] shadow-inner backdrop-blur-[20px] justify-between items-center inline-flex">
+        <span className="flex-row px-[1.125rem] gap-2.5 py-3 bg-sky-600 rounded-[14px] shadow-inner backdrop-blur-[20px] justify-between items-center inline-flex">
           <span className="material-symbols-outlined">add</span>
           <p className=" text-zinc-300 text-base font-semibold font-['IBM Plex Sans Arabic']">
             انشئ مساحة جديدة
           </p>
         </span>
       </div>
+      <ReactSVG src={nasherLogo} className="absolute top-7 left-14"/>
     </div>
   );
 }

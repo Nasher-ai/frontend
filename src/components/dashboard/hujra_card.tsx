@@ -5,7 +5,7 @@ type Props = {};
 function HujraCard({}: Props) {
   return (
     <a
-      href="/dashboard/hujra"
+      href="/hujra"
       className="aspect-[7/4] w-60 p-3 bg-stone-400 bg-opacity-20 rounded-[20px] flex-col justify-between items-center inline-flex"
     >
       <div className="self-stretch justify-end items-center gap-2.5 inline-flex">

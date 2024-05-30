@@ -11,6 +11,7 @@ import FekrahPage from "./App Pages/Fekrah";
 import DashboardPage from "./App Pages/Dashboard";
 import SpacesPage from "./App Pages/Spaces";
 import HujraWhiteboardPage from "./App Pages/Hujra/Whiteboard";
+import HujraDocViewPage from "./App Pages/Hujra/Doc View";
 
 const pagesData: routerType[] = [
   {
@@ -34,9 +35,14 @@ const pagesData: routerType[] = [
     title: "fekrah",
   },
   {
-    path: "/dashboard/hujra",
-    element: <HujraWhiteboardPage/>,
-    title: "whiteboard"
+    path: "/hujra",
+    element: <HujraWhiteboardPage />,
+    title: "whiteboard",
+  },
+  {
+    path: "/hujra/file",
+    element: <HujraDocViewPage />,
+    title: "doc-view",
   },
   {
     path: "/auth/sign-up",

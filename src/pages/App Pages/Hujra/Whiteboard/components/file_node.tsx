@@ -1,6 +1,6 @@
-import React from "react";
-import { userAvatar1 } from "../../../../../static/images";
 import User from "../../../../../models/user";
+import { useNavigate } from "react-router-dom";
+
 
 export enum FileType {
   Doc,
@@ -8,10 +8,16 @@ export enum FileType {
 }
 
 type Props = {
-  data: { title: string; fileType: FileType, user: User };
+  data: {
+    title: string;
+    fileType: FileType;
+    user: User;
+    fileId: string;
+  };
 };
 
 function FileNode({ data }: Props) {
+  const navigate = useNavigate();
   let color;
   let text;
 
@@ -27,6 +33,12 @@ function FileNode({ data }: Props) {
       break;
     }
   }
+
+  function handleClick() {
+    console.log(data.fileId)
+    navigate(`/hujra/file`);
+  }
+
   return (
     <div className="w-[180px] h-[230px] p-2 bg-zinc-800  rounded-[16px] shadow-inner backdrop-blur-[30px] flex-col justify-start items-end gap-2.5 inline-flex">
       <div className="self-stretch justify-between items-center inline-flex">
@@ -45,15 +57,18 @@ function FileNode({ data }: Props) {
           </div>
         </div>
       </div>
-      <div
+      <button
+        type="button"
+        onClick={handleClick}
         className={
-          "self-stretch h-[200px] pb-6 bg-gradient-to-br rounded-[8px] shadow border border-stone-500 backdrop-blur-[30px] flex-col justify-center items-center flex " + color
+          "self-stretch h-[200px] pb-6 bg-gradient-to-br rounded-[8px] shadow border border-stone-500 backdrop-blur-[30px] flex-col justify-center items-center flex " +
+          color
         }
       >
         <div className="text-center text-white text-[54px] font-medium font-['IBM Plex Sans Arabic'] ">
           {text}
         </div>
-      </div>
+      </button>
     </div>
   );
 }

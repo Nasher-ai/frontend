@@ -1,4 +1,4 @@
-import * as icons from "../../static/icons";
+import { NasherIcons } from "../../static/icons";
 import { nasherLogo, userAvatar1 } from "../../static/images";
 import { exUser1 } from "../../static/sample_data";
 import NavigationItem from "./sidebar components/navigation_item";
@@ -49,7 +49,7 @@ export default function SideBar() {
             href="/dashboard/fekrah"
             text="Fekrah"
             key="fekrah"
-            icon={<img src={icons.fekrahIcon} alt="" />}
+            icon={<img src={NasherIcons.fekrah} alt="" />}
           />
           <div className="inline-flex w-full mb-2 mt-4 items-center justify-center">
             <hr className="w-full opacity-15" />
@@ -64,14 +64,14 @@ export default function SideBar() {
             text="Scraper"
             key="scraper"
             isActive={false}
-            icon={<img src={icons.scraperIcon} alt="" />}
+            icon={<img src={NasherIcons.scraper} alt="" />}
           />
           <NavigationItem
             href="#"
             text="Analytics"
             key="analytics"
             isActive={false}
-            icon={<img src={icons.rankingIcon} alt="" />}
+            icon={<img src={NasherIcons.analytics} alt="" />}
           />
         </ul>
       </div>

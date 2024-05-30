@@ -6,10 +6,13 @@ import { FaPen } from "react-icons/fa";
 import { FaEraser, FaNoteSticky } from "react-icons/fa6";
 import { TbTextRecognition } from "react-icons/tb";
 import { LuUpload } from "react-icons/lu";
+import { ReactSVG } from "react-svg";
+import { ToolbarIcons } from "../../../../../../static/icons";
 
 type Props = {
   className?: string;
 };
+
 
 function ToolBar({ className }: Props) {
   return (
@@ -20,25 +23,25 @@ function ToolBar({ className }: Props) {
       }
     >
       <ToolButton>
-        <MdPostAdd size={25}></MdPostAdd>
+        <ReactSVG src={ToolbarIcons.addPage} />
       </ToolButton>
       <ToolButton>
-        <IoShapes size={25}></IoShapes>
+        <ReactSVG src={ToolbarIcons.shapes} />
       </ToolButton>
       <ToolButton>
-        <FaPen size={25}></FaPen>
+        <ReactSVG src={ToolbarIcons.pen} />
       </ToolButton>
       <ToolButton>
-        <FaEraser size={25}></FaEraser>
+        <ReactSVG src={ToolbarIcons.eraser} />
       </ToolButton>
       <ToolButton>
-        <TbTextRecognition size={25}></TbTextRecognition>
+        <ReactSVG src={ToolbarIcons.textBox} />
       </ToolButton>
       <ToolButton>
-        <FaNoteSticky size={25}></FaNoteSticky>
+        <ReactSVG src={ToolbarIcons.stickyNotes} />
       </ToolButton>
       <ToolButton>
-        <LuUpload size={25}></LuUpload>
+        <ReactSVG src={ToolbarIcons.export} />
       </ToolButton>
     </div>
   );
